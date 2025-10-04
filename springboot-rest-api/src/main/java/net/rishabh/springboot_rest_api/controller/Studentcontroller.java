@@ -32,4 +32,11 @@ public class Studentcontroller{
      public Student getStudentPathVariable(@PathVariable("id") int StudentID){
         return new Student("Srivastava","Rishabh",StudentID);
      }
+
+     @GetMapping("students/query")
+    public Student StudentGetRequest(@RequestParam int id,
+                                     @RequestParam String firstName,
+                                     @RequestParam String lastName){
+        return new Student(lastName,firstName,id);
+     }
 }
