@@ -26,4 +26,10 @@ public class Studentcontroller{
         lst.add(new Student("Singh","Ishu",4));
         return lst;
      }
+
+      
+     @GetMapping("students/{id}")
+     public Student getStudentPathVariable(@PathVariable("id") int StudentID){
+        return new Student("Srivastava","Rishabh",StudentID);
+     }
 }
