@@ -16,4 +16,14 @@ public class Studentcontroller{
          );
          return student;
      }
+
+     @GetMapping("/students")
+     public List<Student> getStudents(){
+        List<Student> lst = new ArrayList<>();
+        lst.add(new Student("Srivastava","Rishabh",1));
+        lst.add(new Student("Srivastava","Ayush",2));
+        lst.add(new Student("Srivastava","Tikki",3));
+        lst.add(new Student("Singh","Ishu",4));
+        return lst;
+     }
 }
