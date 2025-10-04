@@ -39,4 +39,20 @@ public class Studentcontroller{
                                      @RequestParam String lastName){
         return new Student(lastName,firstName,id);
      }
+
+     @PostMapping("student/create")
+     @ResponseStatus(HttpStatus.CREATED)
+     public Student createStudent(@RequestBody Student student){
+         System.out.println(student.getId());
+         System.out.println(student.getFirstName());
+         System.out.println(student.getLastName());
+         return student;
+     }
+
+     @PutMapping("student/{id}/update")
+     public Student updateStudent(@RequestBody Student student,@PathVariable("id") int studentID){
+         System.out.println(student.getFirstName());
+         System.out.println(student.getLastName());
+         return student;
+     }
 }
