@@ -1,6 +1,7 @@
 package net.rishabh.springboot_rest_api.controller;
 
 import net.rishabh.springboot_rest_api.bean.Student;
+import org.springframework.boot.autoconfigure.graphql.GraphQlProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,17 +19,17 @@ public class Studentcontroller{
                  "Rishabh",
                  5
          );
-         return new ResponseEntity<>(student, HttpStatus.OK);
+         return ResponseEntity.ok(student);
      }
 
      @GetMapping("/students")
-     public List<Student> getStudents(){
+     public ResponseEntity<List<Student>> getStudents(){
         List<Student> lst = new ArrayList<>();
         lst.add(new Student("Srivastava","Rishabh",1));
         lst.add(new Student("Srivastava","Ayush",2));
         lst.add(new Student("Srivastava","Tikki",3));
         lst.add(new Student("Singh","Ishu",4));
-        return lst;
+        return ResponseEntity.ok(lst);
      }
 
      @GetMapping("students/{id}")
@@ -45,23 +46,23 @@ public class Studentcontroller{
 
      @PostMapping("student/create")
      @ResponseStatus(HttpStatus.CREATED)
-     public Student createStudent(@RequestBody Student student){
+     public ResponseEntity<Student> createStudent(@RequestBody Student student){
          System.out.println(student.getId());
          System.out.println(student.getFirstName());
          System.out.println(student.getLastName());
-         return student;
+         return new ResponseEntity<>(student,HttpStatus.CREATED);
      }
 
      @PutMapping("student/{id}/update")
-     public Student updateStudent(@RequestBody Student student,@PathVariable("id") int studentID){
+     public ResponseEntity<Student> updateStudent(@RequestBody Student student,@PathVariable("id") int studentID){
          System.out.println(student.getFirstName());
          System.out.println(student.getLastName());
-         return student;
+         return ResponseEntity.ok(student);
      }
 
      @DeleteMapping("student/{id}/delete")
-     public String deleteStudent(@PathVariable("id") int studentID){
+     public ResponseEntity<String> deleteStudent(@PathVariable("id") int studentID){
          System.out.println(studentID);
-         return "Student Deleted Successfully!";
+         return ResponseEntity.ok("Student Deleted Successfully 💀");
      }
 }
