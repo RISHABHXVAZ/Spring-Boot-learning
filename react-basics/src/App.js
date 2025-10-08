@@ -1,8 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import Welcome from './components/Welcome';
 
 function App() {
-  return (<h1>Hii Everyone</h1>);
+  return(
+  <div className='App'>
+    <Welcome/>
+  
+     <Welcome/>  {/*reusabiltity */}
+  </div>
+  );
 }
 
 export default App;
