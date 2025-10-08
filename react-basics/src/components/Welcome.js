@@ -4,6 +4,6 @@
     
 // }
 
-const Welcome = () => <h1>Welcome,World..</h1>
+const Welcome = (props) => <h1>Welcome {props.name}..</h1>
 
 export default Welcome
